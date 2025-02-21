@@ -1,0 +1,21 @@
+package com.yusufbatmaz.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.entities.Student;
+import com.yusufbatmaz.repository.Studentrepository;
+import com.yusufbatmaz.services.IStudentService;
+
+@Service
+public class StudentServiceImpl implements IStudentService{ //Kendi katmanındaki Interface'den implemente edelim.
+	
+	@Autowired
+	private Studentrepository studentRepository;  
+	
+	@Override
+	public Student saveStudent(Student student) {
+		return studentRepository.save(student);
+	}
+
+}

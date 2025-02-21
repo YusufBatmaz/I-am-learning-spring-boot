@@ -1,0 +1,7 @@
+package com.yusufbatmaz.services.impl;
+
+import com.yusufbatmaz.services.ICustomerService;
+
+public class CustomerServiceImpl implements ICustomerService{
+
+}

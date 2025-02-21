@@ -1,0 +1,90 @@
+package com.yusufbatmaz.services.impl;
+
+import java.awt.print.Printable;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoStudent;
+import com.yusufbatmaz.dto.DtoStudentIU;
+import com.yusufbatmaz.entities.Student;
+import com.yusufbatmaz.repository.Studentrepository;
+import com.yusufbatmaz.services.IStudentService;
+
+@Service
+public class StudentServiceImpl implements IStudentService{ //Kendi katmanındaki Interface'den implemente edelim.
+	
+	@Autowired
+	private Studentrepository studentRepository;  
+	
+	@Override
+	public DtoStudent saveStudent(DtoStudentIU dtoStudentIU) {
+		DtoStudent response = new DtoStudent();
+		Student student = new Student();
+		BeanUtils.copyProperties(dtoStudentIU, student);
+		
+		Student dbStudent = studentRepository.save(student);
+		BeanUtils.copyProperties(dbStudent, response);
+		return response;
+	}
+ 
+	@Override
+	public List<Student> getAllStudents() {
+		return studentRepository.findAll();
+	}
+
+	@Override
+	public Student getStudentById(Integer id) {
+		Optional<Student> optional = studentRepository.findById(id);
+		if (optional.isPresent()) { //Id bulunuyorsa dönürecek
+			return optional.get();
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteStudentById(Integer id) {
+		Student dbStudent = getStudentById(id);
+		if (dbStudent != null) {
+			studentRepository.delete(dbStudent);			
+		}
+	}
+
+	@Override
+	public Student updateStudent(Integer id, Student updateStudent) {
+		Student dbStudent = getStudentById(id);
+		if (dbStudent != null) {
+			dbStudent.setFirstName(updateStudent.getFirstName());
+			dbStudent.setLastName(updateStudent.getLastName());
+			dbStudent.setBirthOfDate(updateStudent.getBirthOfDate());
+			return studentRepository.save(dbStudent);
+		}
+		return null;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

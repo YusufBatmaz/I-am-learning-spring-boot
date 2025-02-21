@@ -1,0 +1,36 @@
+package com.yusufbatmaz.exception;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	//Spring Validation'dan alınan hataları kontrol etmek ve response dönmek
+	
+	private List<String> addMapValue(List<String> list, String newValue){
+		list.add(newValue);
+		return list;
+	}
+	
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public void handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+		
+		//Hataları daha düzenli göstermek için bir map oluşturalım.
+		Map<String, List<String>> errorsMap = new HashMap<>();
+		
+		for (ObjectError objError : ex.getBindingResult().getAllErrors()) {
+			
+			//Field isimlerini alabilmek  için:
+			
+			
+			//Hataları almak için:
+		}
+	}
+	
+}

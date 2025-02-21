@@ -1,0 +1,22 @@
+package com.yusufbatmaz.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoCustomer;
+import com.yusufbatmaz.repository.CustomerRepository;
+import com.yusufbatmaz.services.ICustomerService;
+
+@Service
+public class CustomerServiceImpl implements ICustomerService{
+
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	
+	@Override
+	public DtoCustomer findCustomerById(Long id) {
+		return null;
+	}
+
+}

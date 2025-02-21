@@ -1,0 +1,117 @@
+package com.yusufbatmaz.services.impl;
+
+import java.awt.print.Printable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoStudent;
+import com.yusufbatmaz.dto.DtoStudentIU;
+import com.yusufbatmaz.entities.Student;
+import com.yusufbatmaz.repository.Studentrepository;
+import com.yusufbatmaz.services.IStudentService;
+
+@Service
+public class StudentServiceImpl implements IStudentService{ //Kendi katmanındaki Interface'den implemente edelim.
+	
+	@Autowired
+	private Studentrepository studentRepository;  
+	
+	@Override
+	public DtoStudent saveStudent(DtoStudentIU dtoStudentIU) {
+		DtoStudent response = new DtoStudent();
+		Student student = new Student();
+		BeanUtils.copyProperties(dtoStudentIU, student);
+		
+		Student dbStudent = studentRepository.save(student);
+		BeanUtils.copyProperties(dbStudent, response);
+		return response;
+	}
+ 
+	@Override
+	public List<DtoStudent> getAllStudents() {
+		
+		List<DtoStudent> dtoList = new ArrayList<>();
+		List<Student> studentList = studentRepository.findAll();
+		for (Student student : studentList) {
+			DtoStudent dto = new DtoStudent();
+			BeanUtils.copyProperties(student, dto);
+			dtoList.add(dto);
+		}
+		return dtoList;
+	}
+
+	@Override
+	public DtoStudent getStudentById(Integer id) {
+		DtoStudent dto = new DtoStudent();
+		Optional<Student> optional = studentRepository.findById(id);
+		if (optional.isPresent()) { //Id bulunuyorsa dönürecek
+			Student dbStudent = optional.get();
+			BeanUtils.copyProperties(dbStudent, dto);
+		}
+		return dto;
+	}
+
+	@Override
+	public void deleteStudentById(Integer id) {
+		Optional<Student> optional = studentRepository.findById(id);
+		if (optional.isPresent()) {
+			studentRepository.delete(optional.get());			
+		}
+	}
+
+	@Override
+	public DtoStudent updateStudent(Integer id ,DtoStudentIU dtoStudentIU) {
+		DtoStudent dto = new DtoStudent();
+		
+		Optional<Student> optional = studentRepository.findById(id);
+		if (optional.isPresent()) {
+			Student dbStudent = optional.get();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//DTO kullanılmamış kod.
+//		DtoStudent dtoStudent = getStudentById(id);
+//		if (dbStudent != null) {
+//			dbStudent.setFirstName(updateStudent.getFirstName());
+//			dbStudent.setLastName(updateStudent.getLastName());
+//			dbStudent.setBirthOfDate(updateStudent.getBirthOfDate());
+//			return studentRepository.save(dbStudent);
+//		}
+//		return null;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

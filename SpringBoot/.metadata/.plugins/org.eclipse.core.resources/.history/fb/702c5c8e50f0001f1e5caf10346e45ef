@@ -1,0 +1,21 @@
+package com.yusufbatmaz.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoAddress;
+import com.yusufbatmaz.repository.AddressRepository;
+import com.yusufbatmaz.services.IAddressService;
+
+@Service
+public class AddressServiceImpl implements IAddressService{
+	
+	@Autowired
+	private AddressRepository addressRepository;
+	
+	@Override
+	public DtoAddress findAddressById(Long id) {
+		return null;
+	}
+
+}

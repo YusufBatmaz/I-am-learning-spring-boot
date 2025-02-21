@@ -1,0 +1,16 @@
+package com.yusufbatmaz.exception;
+
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	//Spring Validation'dan alınan hataları kontrol etmek ve response dönmek
+	
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public void handleMethodArgumentNotValidException(MethodArgumentNotValidException Ex) {
+		
+	}
+	
+}

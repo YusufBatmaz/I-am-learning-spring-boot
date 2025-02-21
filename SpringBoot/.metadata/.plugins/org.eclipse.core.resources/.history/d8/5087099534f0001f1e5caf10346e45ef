@@ -1,0 +1,7 @@
+package com.yusufbatmaz.controller.impl;
+
+import com.yusufbatmaz.controller.ICustomerController;
+
+public class CustomerControllerImpl implements ICustomerController{
+
+}

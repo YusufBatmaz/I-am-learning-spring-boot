@@ -1,0 +1,16 @@
+package com.yusufbatmaz.services;
+
+import java.util.List;
+
+import com.yusufbatmaz.entities.Student;
+
+public interface IStudentService {
+	
+	public Student saveStudent(Student student);
+	
+	public List<Student> getAllStudents(); //Student listesini döndürür.
+	
+	public Student getStudentById(Integer id);  //Id'ye göre student getirecek
+	
+	public  Student deleteStudentById(Integer id); //Id'ye göre student sil
+}

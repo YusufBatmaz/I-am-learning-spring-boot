@@ -1,0 +1,8 @@
+package com.yusufbatmaz.controller;
+
+import com.yusufbatmaz.entities.Student;
+
+public interface IStudentController {
+	
+	public Student saveStudent(Student student);
+}

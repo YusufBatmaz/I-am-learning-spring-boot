@@ -1,0 +1,8 @@
+package com.yusufbatmaz.services;
+
+import com.yusufbatmaz.entities.Student;
+
+public interface IStudentService {
+	public Student saveStudent(Student student);
+
+}
