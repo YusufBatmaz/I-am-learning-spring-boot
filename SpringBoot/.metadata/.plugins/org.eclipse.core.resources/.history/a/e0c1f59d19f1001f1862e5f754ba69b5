@@ -1,0 +1,21 @@
+package com.yusufbatmaz.entities;
+
+import java.math.BigDecimal;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "home")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Home {
+	
+	private Long id;
+	
+	private BigDecimal price;
+}

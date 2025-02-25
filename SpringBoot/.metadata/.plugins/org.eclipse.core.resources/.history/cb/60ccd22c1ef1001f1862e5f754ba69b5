@@ -1,0 +1,22 @@
+package com.yusufbatmaz.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoHome;
+import com.yusufbatmaz.repository.HomeRepository;
+import com.yusufbatmaz.services.IHomeService;
+
+@Service
+public class HomeServiceImpl implements IHomeService{
+	
+	@Autowired
+	private HomeRepository  homeRepository;
+	
+	@Override
+	public DtoHome findHomeById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

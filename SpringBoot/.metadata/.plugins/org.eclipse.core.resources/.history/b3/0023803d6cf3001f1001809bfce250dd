@@ -1,0 +1,31 @@
+package com.yusufbatmaz.services.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoEmployee;
+import com.yusufbatmaz.repository.EmployeeRepository;
+import com.yusufbatmaz.services.IEmployeeService;
+
+@Service
+public class EmployeeServiceImpl implements IEmployeeService {
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Override
+	public List<DtoEmployee> findAllEmployees() {
+		
+		List<DtoEmployee> employeeList = new ArrayList<>();
+		
+		
+		
+		
+		
+		return null;
+	}
+
+}
