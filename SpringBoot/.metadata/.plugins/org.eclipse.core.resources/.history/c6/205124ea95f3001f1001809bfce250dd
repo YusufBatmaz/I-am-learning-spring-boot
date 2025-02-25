@@ -1,0 +1,17 @@
+package com.yusufbatmaz.configuration;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import lombok.Data;
+
+@Data
+//app.properties dosyasından veri almak için kullanacağım.
+public class GlobalProperties {
+	
+	@Value("${spring.datasource.url}")
+	private String url;
+	
+	private String username;
+	
+	private String password;
+}

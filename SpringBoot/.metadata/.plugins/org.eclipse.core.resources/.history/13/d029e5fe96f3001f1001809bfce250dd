@@ -1,0 +1,15 @@
+package com.yusufbatmaz.controller.impl;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(path = "/rest/api/property")
+public class PropertySourceController {
+	
+	@GetMapping(path = "/datasource")
+	public String getDataSource() {
+		
+	}
+}
