@@ -1,0 +1,9 @@
+package com.yusufbatmaz.controller;
+
+import com.yusufbatmaz.dto.DtoDepartment;
+import com.yusufbatmaz.dto.DtoEmployee;
+
+public interface IEmployeeController {
+	
+	public DtoEmployee findEmployeeById(Long id);
+}

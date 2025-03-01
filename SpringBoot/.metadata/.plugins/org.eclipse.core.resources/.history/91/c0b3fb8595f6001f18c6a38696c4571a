@@ -1,0 +1,28 @@
+package com.yusufbatmaz.service.impl;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.dto.DtoEmployee;
+import com.yusufbatmaz.model.Employee;
+import com.yusufbatmaz.repository.EmployeeRepository;
+import com.yusufbatmaz.service.IEmployeeService;
+
+@Service
+public class EmployeeService implements IEmployeeService {
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Override
+	public DtoEmployee findEmployeeById(Long id) {
+		Optional<Employee> optional = employeeRepository.findById(id);
+		if (optional.isEmpty()) {
+			return null;
+		}
+		Employee employee = optional.get();
+		return null;
+	}
+
+} 

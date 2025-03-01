@@ -1,0 +1,5 @@
+package com.yusufbatmaz.controller.impl;
+
+public class EmployeeController {
+
+}

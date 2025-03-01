@@ -1,0 +1,24 @@
+package com.yusufbatmaz.service.impl;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yusufbatmaz.model.Employee;
+import com.yusufbatmaz.repository.EmployeeRepository;
+import com.yusufbatmaz.service.IEmployeeService;
+
+@Service
+public class EmployeeService implements IEmployeeService {
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Override
+	public Employee findEmployeeById(Long id) {
+		Optional<Employee> employee = employeeRepository.findById(id);
+
+		return null;
+	}
+
+}

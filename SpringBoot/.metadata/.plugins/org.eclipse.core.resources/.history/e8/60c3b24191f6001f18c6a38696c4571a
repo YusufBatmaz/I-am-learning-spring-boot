@@ -1,0 +1,5 @@
+package com.yusufbatmaz.service.impl;
+
+public class EmployeeService {
+
+}

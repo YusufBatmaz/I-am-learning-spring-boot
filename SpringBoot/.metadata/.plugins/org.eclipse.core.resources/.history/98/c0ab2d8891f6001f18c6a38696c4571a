@@ -1,0 +1,5 @@
+package com.yusufbatmaz.service;
+
+public interface IEmployeeService {
+
+}

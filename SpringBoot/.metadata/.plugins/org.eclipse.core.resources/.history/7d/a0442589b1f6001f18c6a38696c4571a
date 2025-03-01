@@ -1,0 +1,8 @@
+package com.yusufbatmaz.exception;
+
+public class BaseException extends RuntimeException {
+
+	public BaseException() {
+
+	}
+}
