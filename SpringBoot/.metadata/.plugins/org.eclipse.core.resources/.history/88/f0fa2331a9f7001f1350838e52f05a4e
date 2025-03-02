@@ -1,0 +1,21 @@
+package com.yusufbatmaz.exception_management;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.yusufbatmaz.dto.DtoEmployee;
+import com.yusufbatmaz.service.IEmployeeService;
+import com.yusufbatmaz.starter.ExceptionManagementStarter;
+
+@SpringBootTest(classes = { ExceptionManagementStarter.class })
+class ExceptionManagementApplicationTests {
+	
+	@Autowired
+	private IEmployeeService employeeService;
+	
+	
+	private void testFindEmployeeById() {
+		
+		DtoEmployee employeeById = employeeService.findEmployeeById(4L);
+	}
+}

@@ -1,0 +1,10 @@
+package com.yusufbatmaz.exception_management;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.yusufbatmaz.starter.ExceptionManagementStarter;
+
+@SpringBootTest(classes = { ExceptionManagementStarter.class })
+class ExceptionManagementApplicationTests {
+
+}

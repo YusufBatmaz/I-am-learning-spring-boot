@@ -1,0 +1,25 @@
+package com.yusufbatmaz.exception_management;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.yusufbatmaz.dto.DtoEmployee;
+import com.yusufbatmaz.service.IEmployeeService;
+import com.yusufbatmaz.starter.ExceptionManagementStarter;
+
+@SpringBootTest(classes = { ExceptionManagementStarter.class })
+class ExceptionManagementApplicationTests {
+
+	@Autowired
+	private IEmployeeService employeeService;
+	
+	@Test
+	private void testFindEmployeeById() {
+		DtoEmployee employee = employeeService.findEmployeeById(4L);
+		if (employee != null) {
+			System.out.println("İsim : " + employee.getName());
+		}
+
+	}
+}
