@@ -1,0 +1,5 @@
+package com.yusufbatmaz.model;
+
+public class User {
+
+}
