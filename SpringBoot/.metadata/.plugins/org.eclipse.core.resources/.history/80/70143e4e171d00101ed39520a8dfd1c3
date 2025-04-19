@@ -1,0 +1,5 @@
+package com.yusufbatmaz.config;
+
+public class AppConfig {
+
+}

@@ -1,0 +1,14 @@
+package com.yusufbatmaz.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.yusufbatmaz.model.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+	Optional<User> findByUsername(String username);
+}
