@@ -1,0 +1,5 @@
+package com.yusufbatmaz.jwt;
+
+public class JwtAuthenticationFilter {
+
+}

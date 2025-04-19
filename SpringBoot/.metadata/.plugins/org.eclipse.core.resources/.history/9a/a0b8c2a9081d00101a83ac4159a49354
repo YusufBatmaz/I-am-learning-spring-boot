@@ -1,0 +1,59 @@
+package com.yusufbatmaz.jwt;
+
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@Component // Filter katmanı olduğunu belirtmek için bu sınıf extend edilir
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+	@Autowired
+	private JwtService jwtService;
+
+	@Autowired
+	private UserDetailsService userDetailsService;
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+
+		String header;
+		String token;
+		String userName;
+
+		header = request.getHeader("Authorization");
+
+		if (header == null) {
+			filterChain.doFilter(request, response);
+		}
+
+		token = header.substring(7); // İlk 7 karakterden sonrasını almamızın sebebi tokenın "Bearer blablablablabla"
+										// şeklinde dönmesi
+		try {
+			userName = jwtService.getUserNameByToken(token);
+			if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+				UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+				if (userDetails != null && jwtService.isTokenExpired(token)) {
+					// Kişi SecurityContext'e eklenebilir
+					UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+							userName, null, userDetails.getAuthorities());
+				}
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+}
